@@ -1,0 +1,265 @@
+late ScrollController scrollController;
+  @override
+  void iniState(){
+    super.initState();
+    scrollController = scrollController;
+  }
+  @override
+  void dispose(){
+    scrollController.dispose();
+    super.dispose();
+  }
+
+
+  import 'package:day_night_switcher/day_night_switcher.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
+import 'package:lottie/lottie.dart';
+import 'package:qusai_final_project/login_page.dart';
+
+class EngineerPage extends StatefulWidget {
+  const EngineerPage({super.key});
+
+  @override
+  State<EngineerPage> createState() => _EngineerPageState();
+}
+
+class _EngineerPageState extends State<EngineerPage> with SingleTickerProviderStateMixin{
+  
+  var black = Colors.grey.shade900;
+  var white = Colors.white;
+  var  grey= Colors.grey.shade800;
+  String bell = 'assets/system-regular-46-notification-bell (1).json';
+  String exit = 'assets/wired-outline-1725-exit-sign (2).json';
+  bool isDarkModeEnabled = true;
+  darkmode (){
+    if (isDarkModeEnabled){
+      black = Colors.grey.shade900;
+      white = Colors.white;
+      grey = Colors.grey.shade800;
+      bell = 'assets/system-regular-46-notification-bell (1).json';
+      exit = 'assets/wired-outline-1725-exit-sign (2).json';
+    }else{
+      black = Colors.grey.shade300;
+      white = Colors.black;
+      grey = Colors.grey.shade100;
+      bell = 'assets/system-regular-46-notification-bell.json';
+      exit = 'assets/wired-outline-1725-exit-sign.json';
+    }
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          SliverAppBar(
+            floating: true,
+            snap: true,
+            backgroundColor: black,
+            leading: IconButton(
+              onPressed:null,
+              icon: Lottie.asset(bell),
+            ),
+            actions: [
+            
+              DayNightSwitcher(
+                // nightBackgroundColor: Colors.black,
+                // dayBackgroundColor: Colors.white,
+                isDarkModeEnabled: isDarkModeEnabled,
+                onStateChanged: (isDarkModeEnabled) {
+                  setState(() {
+                    this.isDarkModeEnabled = isDarkModeEnabled;
+                    darkmode();
+                  });
+                },
+              ),
+              const SizedBox(width: 55,),
+              IconButton(
+                onPressed: (() {
+                  Navigator.push(context, MaterialPageRoute(builder: ((context) => const LogInPage())));
+                }),
+                icon: Lottie.asset(exit),
+              ),
+            ]
+          ),
+        ],
+        body:
+        Container(
+          padding: const EdgeInsets.all(10),
+          color: isDarkModeEnabled ? Colors.grey[900] : Colors.grey[300],
+          child: Column(children: [
+            Padding (
+              padding: const EdgeInsets.only(top: 20),
+              child: Text
+              (
+                "maintenance parts",
+                style: GoogleFonts.quicksand(
+                  textStyle:  TextStyle(
+                  color: isDarkModeEnabled ? Colors.white : Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold
+                  )
+                ),
+              ),
+            ),
+            Expanded(
+              child: GridView.count(
+                //shrinkWrap: true,
+                
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 1,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                children: [
+                  Container(
+                     padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      color: isDarkModeEnabled ? Colors.grey[900] : Colors.grey[300],
+                      borderRadius: const BorderRadius.all(Radius.circular(25)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: isDarkModeEnabled ? const Color(0x89000000) : const Color.fromRGBO(158, 158, 158, 1),
+                          offset: const Offset(4.0, 4.0),
+                          blurRadius: 15.0,
+                          spreadRadius: 1.0
+                        ),
+                        BoxShadow (
+                          color: isDarkModeEnabled ? const Color.fromRGBO(66, 66, 66, 1) : const Color.fromRGBO(255, 255, 255, 1),
+                          offset: const Offset(-4.0, -4.0),
+                          blurRadius: 15.0,
+                          spreadRadius: 1.0
+                        ),
+                      ]
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text
+                        (
+                          "2",
+                          style: GoogleFonts.quicksand(
+                            textStyle:  TextStyle(
+                            color: isDarkModeEnabled ? Colors.white : Colors.black,
+                            fontSize: 60,
+                            fontWeight: FontWeight.bold
+                            )
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Icon(Icons.crisis_alert, size: 30, color: isDarkModeEnabled ? Colors.white : Colors.black),
+                            Text
+                            (
+                              "Past Due",
+                              style: GoogleFonts.quicksand(
+                                textStyle:  TextStyle(
+                                color: isDarkModeEnabled ? Colors.white : Colors.black,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold
+                                )
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),                  
+                  ),
+                  Container(
+                  decoration: BoxDecoration(
+                      color: isDarkModeEnabled ? Colors.grey[900] : Colors.grey[300],
+                      borderRadius: const BorderRadius.all(Radius.circular(25)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: isDarkModeEnabled ? const Color(0x89000000) : const Color.fromRGBO(158, 158, 158, 1),
+                          offset: const Offset(4.0, 4.0),
+                          blurRadius: 15.0,
+                          spreadRadius: 1.0
+                        ),
+                        BoxShadow (
+                          color: isDarkModeEnabled ? const Color.fromRGBO(66, 66, 66, 1) : const Color.fromRGBO(255, 255, 255, 1),
+                          offset: const Offset(-4.0, -4.0),
+                          blurRadius: 15.0,
+                          spreadRadius: 1.0
+                        ),
+                      ]
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text
+                        (
+                          "12",
+                          style: GoogleFonts.quicksand(
+                            textStyle:  TextStyle(
+                            color: isDarkModeEnabled ? Colors.white : Colors.black,
+                            fontSize: 60,
+                            fontWeight: FontWeight.bold
+                            )
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Icon(Icons.access_alarm, size: 30, color: isDarkModeEnabled ? Colors.white : Colors.black),
+                            Text
+                            (
+                              "Comming Due",
+                              style: GoogleFonts.quicksand(
+                                textStyle:  TextStyle(
+                                color: isDarkModeEnabled ? Colors.white : Colors.black,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold
+                                )
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],),
+        )
+      ),
+      bottomNavigationBar: Container(
+        color: black,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal:15.0, vertical: 10.0),
+          child: GNav(
+            selectedIndex: 1,
+            gap: 15,
+            backgroundColor: black,
+            color: white,
+            activeColor: white,
+            tabBackgroundColor: grey,
+            padding: const EdgeInsets.all(15),
+            tabs: const [
+              GButton(
+                icon: LineIcons.tools,
+                text: 'Parts',
+              ),
+              GButton(
+                icon: LineIcons.home,
+                text: 'Home',
+              ),
+              
+              GButton(
+                icon: LineIcons.paste,
+                text: 'Log-sheets',
+              ),
+              // GButton(
+              //   icon: LineIcons.cog,
+              //   text: 'settings',
+              // )
+            ]
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "367690185771",
+    "project_id": "push-notification-c193a",
+    "storage_bucket": "push-notification-c193a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367690185771:android:b6e3258a401b2d26bffe6e",
+        "android_client_info": {
+          "package_name": "com.example.qusai_final_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMUc4RNf931q7ppFZz7sOgtSRoM7wz55w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
